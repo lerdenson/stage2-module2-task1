@@ -20,20 +20,11 @@ public class AddUserServlet extends HttpServlet {
         Warehouse.getInstance().addUser(user);
 
         request.setAttribute("user", user);
-        try {
-            request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
-        } catch (Exception e) {
-            return;
-        }
+        request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        try {
-            request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);;
-        } catch (Exception e) {
-            return;
-        }
+        request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
     }
 }

@@ -1,5 +1,5 @@
 <%@ page import="com.example.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
     </form>
     <div>
         <button class="w3-btn w3-light-blue w3-round-large"
-                onclick="location.href='${pageContext.request.contextPath}/users'">Users
+                onclick="location.href='/users'">Users
         </button>
     </div>
 </div>

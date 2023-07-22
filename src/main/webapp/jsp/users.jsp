@@ -24,7 +24,7 @@
         <br>
         <div>
             <button class="w3-btn w3-green w3-round-large"
-                    onclick="location.href='${pageContext.request.contextPath}/add'">Add User
+                    onclick="location.href='/add'">Add User
             </button>
         </div>
     </div>
