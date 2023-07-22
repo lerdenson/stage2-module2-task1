@@ -16,16 +16,18 @@ public class AddUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        User user = new User(firstName, lastName);
-        Warehouse.getInstance().addUser(user);
+        if (firstName != null && lastName != null) {
+            User user = new User(firstName, lastName);
+            Warehouse.getInstance().addUser(user);
 
-        request.setAttribute("user", user);
+            request.setAttribute("user", user);
+        }
 
         request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
+        doPost(request, response);
     }
 }
