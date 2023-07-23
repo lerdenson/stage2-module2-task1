@@ -20,7 +20,6 @@ public class AddUserServlet extends HttpServlet {
         Warehouse.getInstance().addUser(user);
 
         request.setAttribute("user", user);
-
         request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
     }
 
