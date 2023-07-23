@@ -13,18 +13,27 @@ import java.io.IOException;
 @WebServlet("/add")
 public class AddUserServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         User user = new User(firstName, lastName);
         Warehouse.getInstance().addUser(user);
 
         request.setAttribute("user", user);
-        request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
+
+        try {
+            response.sendRedirect("/add");
+        } catch (IOException e) {
+            e.getLocalizedMessage();
+        }
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/jsp/add.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.getRequestDispatcher("jsp/add.jsp").forward(request, response);
+        } catch (IOException | ServletException e) {
+            e.getLocalizedMessage();
+        }
     }
 }
